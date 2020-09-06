@@ -1,3 +1,5 @@
+const { performance } = require("perf_hooks");
+
 const anagramTester = (firstWord, secondWord) => {
   return (
     firstWord.toLowerCase().split("").sort().join("") ===
@@ -10,14 +12,24 @@ const palindromeTester = (word) => {
 };
 
 const wordComparison = (firstWord, secondWord) => {
+  const startTime = performance.now();
   return {
     firstWord: firstWord,
     secondWord: secondWord,
     anagram: anagramTester(firstWord, secondWord),
     firstWordPalindrome: palindromeTester(firstWord),
     secondWordPalindrome: palindromeTester(secondWord),
-    timeToComplete: 0,
+    timeToComplete: comparisonTimer(startTime, performance.now()),
   };
 };
 
-module.exports = { anagramTester, palindromeTester, wordComparison };
+const comparisonTimer = (startTime, currentTime) => {
+  return parseFloat((currentTime - startTime).toFixed(3));
+};
+
+module.exports = {
+  anagramTester,
+  palindromeTester,
+  wordComparison,
+  comparisonTimer,
+};

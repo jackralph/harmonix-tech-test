@@ -1,6 +1,11 @@
 const assert = require("assert");
-const { anagramTester, palindromeTester, wordComparison } = require("../utils");
-const WordComparison = require("../models/WordComparison.model");
+const { performance } = require("perf_hooks");
+const {
+  anagramTester,
+  palindromeTester,
+  wordComparison,
+  comparisonTimer,
+} = require("../utils");
 
 describe("anagramTester()", () => {
   it("returns false for none anagram words", () => {
@@ -62,5 +67,19 @@ describe("wordComparison()", () => {
     assert.equal(actual.firstWordPalindrome, expected.firstWordPalindrome);
     assert.equal(actual.secondWordPalindrome, expected.secondWordPalindrome);
     assert.equal(typeof actual.timeToComplete, "number");
+  });
+});
+
+describe("comparisonTimer()", () => {
+  it("returns a number", () => {
+    const actual = comparisonTimer();
+
+    assert.equal(typeof actual, "number");
+  });
+  it("returns a number to three decimal places", () => {
+    const startTime = performance.now();
+    const actual = comparisonTimer(startTime, performance.now());
+
+    assert(actual > 0);
   });
 });
