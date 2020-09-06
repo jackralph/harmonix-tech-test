@@ -4,7 +4,7 @@ const WordComparison = require("../models/WordComparison.model");
 
 describe("mongodb functionality", () => {
   beforeEach(() => {
-    mongoose.connect("mongodb://localhost/wordcomparison", {
+    mongoose.connect("mongodb://localhost/wordcomparison_test", {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
@@ -38,10 +38,10 @@ describe("mongodb functionality", () => {
       done();
     });
   });
-  it("doesn't save a record if missing required fields", (done) => {
+  it("finds all the records", (done) => {
     const newWordComparisonA = new WordComparison({
       firstWord: "hello",
-      secondWord: "",
+      secondWord: "world",
       anagram: false,
       firstWordPalindrome: false,
       secondWordPalindrome: false,
@@ -50,7 +50,7 @@ describe("mongodb functionality", () => {
 
     const newWordComparisonB = new WordComparison({
       firstWord: "hello",
-      secondWord: "",
+      secondWord: "world",
       anagram: false,
       firstWordPalindrome: false,
       secondWordPalindrome: false,
