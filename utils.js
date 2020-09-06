@@ -5,6 +5,8 @@ const anagramTester = (firstWord, secondWord) => {
   );
 };
 
-anagramTester("anna", "nana");
+const palindromeTester = (word) => {
+  return word.toLowerCase().split("").reverse().join("") === word.toLowerCase();
+};
 
-module.exports = anagramTester;
+module.exports = { anagramTester, palindromeTester };
