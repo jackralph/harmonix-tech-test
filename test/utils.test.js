@@ -1,5 +1,6 @@
 const assert = require("assert");
-const { anagramTester, palindromeTester } = require("../utils");
+const { anagramTester, palindromeTester, wordComparison } = require("../utils");
+const WordComparison = require("../models/WordComparison.model");
 
 describe("anagramTester()", () => {
   it("returns false for none anagram words", () => {
@@ -19,7 +20,7 @@ describe("anagramTester()", () => {
   });
 });
 
-describe("palindromeTester", () => {
+describe("palindromeTester()", () => {
   it("returns false for none palindrome words", () => {
     const actual = palindromeTester("Hello");
 
@@ -34,5 +35,32 @@ describe("palindromeTester", () => {
     const actual = palindromeTester("Anna");
 
     assert.equal(true, actual);
+  });
+});
+
+describe("wordComparison()", () => {
+  it("returns an object", () => {
+    const actual = wordComparison("Hello", "World");
+
+    assert.equal("object", typeof actual);
+  });
+  it("returns an object containing properties conforming to WordComparison model", () => {
+    const actual = wordComparison("Hello", "World");
+
+    const expected = {
+      firstWord: "Hello",
+      secondWord: "World",
+      anagram: false,
+      firstWordPalindrome: false,
+      secondWordPalindrome: false,
+      timeToComplete: 0,
+    };
+
+    assert.equal(actual.firstWord, expected.firstWord);
+    assert.equal(actual.secondWord, expected.secondWord);
+    assert.equal(actual.anagram, expected.anagram);
+    assert.equal(actual.firstWordPalindrome, expected.firstWordPalindrome);
+    assert.equal(actual.secondWordPalindrome, expected.secondWordPalindrome);
+    assert.equal(typeof actual.timeToComplete, "number");
   });
 });

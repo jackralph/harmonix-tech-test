@@ -9,4 +9,15 @@ const palindromeTester = (word) => {
   return word.toLowerCase().split("").reverse().join("") === word.toLowerCase();
 };
 
-module.exports = { anagramTester, palindromeTester };
+const wordComparison = (firstWord, secondWord) => {
+  return {
+    firstWord: firstWord,
+    secondWord: secondWord,
+    anagram: anagramTester(firstWord, secondWord),
+    firstWordPalindrome: palindromeTester(firstWord),
+    secondWordPalindrome: palindromeTester(secondWord),
+    timeToComplete: 0,
+  };
+};
+
+module.exports = { anagramTester, palindromeTester, wordComparison };
