@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("/", wordComparisonsRouter);
 
 mongoose.connect(
-  process.env.DB_CONFIG,
+  process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("connected");
