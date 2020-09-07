@@ -7,9 +7,9 @@ const getWordComparisons = async (request, response) => {
     const wordComparisons = await WordComparison.find().sort({
       timeToComplete: orderBy || 1,
     });
-    response.json({ wordComparisons });
+    response.send({ wordComparisons });
   } catch (error) {
-    response.json({ error });
+    response.send({ error });
   }
 };
 
