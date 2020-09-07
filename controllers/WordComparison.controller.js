@@ -2,7 +2,7 @@ const { wordComparison } = require("../models/utils.js");
 const WordComparison = require("../models/WordComparison.model");
 
 const getWordComparisons = async (request, response) => {
-  const { orderBy } = request.body;
+  const { orderBy } = request.query;
   try {
     const wordComparisons = await WordComparison.find().sort({
       timeToComplete: orderBy || 1,
