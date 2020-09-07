@@ -1,10 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const { mongoURI } = require("./dbconfig");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const wordComparisonsRouter = require("./routes/wordComparisons");
-const { mongoURI } = require("./dbconfig");
 
 app.use(cors());
 
