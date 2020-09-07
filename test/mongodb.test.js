@@ -3,7 +3,7 @@ const assert = require("assert");
 const WordComparison = require("../models/WordComparison.model");
 
 describe("mongodb functionality", () => {
-  beforeEach(() => {
+  before(() => {
     mongoose.connect("mongodb://localhost/wordcomparison_test", {
       useUnifiedTopology: true,
       useNewUrlParser: true,
