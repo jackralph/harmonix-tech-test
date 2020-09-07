@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
+const wordComparisonsRouter = require("./routes/wordComparisons");
 
-app.use("/", () => {
-  console.log("hello");
-});
+app.use(express.json());
+
+app.use("/", wordComparisonsRouter);
 
 mongoose.connect(
   process.env.DB_CONNECTION,

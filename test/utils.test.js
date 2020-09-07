@@ -5,7 +5,7 @@ const {
   palindromeTester,
   wordComparison,
   comparisonTimer,
-} = require("../utils");
+} = require("../models/utils");
 
 describe("anagramTester()", () => {
   it("returns false for none anagram words", () => {
