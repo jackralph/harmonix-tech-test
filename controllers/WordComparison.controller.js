@@ -1,25 +1,28 @@
 const { wordComparison } = require("../models/utils.js");
 const WordComparison = require("../models/WordComparison.model");
 
-const newWordComparison = (words) => {
-  const { firstWord, secondWord } = words;
+const getWordComparisons = async (request, response) => {
+  const { orderBy } = request.body;
+  try {
+    const wordComparisons = await WordComparison.find().sort({
+      timeToComplete: orderBy || 1,
+    });
+    response.json({ wordComparisons });
+  } catch (error) {
+    response.json({ error });
+  }
+};
+
+const newWordComparison = async (request, response) => {
+  const { firstWord, secondWord } = request.body;
   const newComparison = new WordComparison(
     wordComparison(firstWord, secondWord)
   );
   try {
     newComparison.save();
-    return newComparison;
+    response.send({ wordComparison: newComparison });
   } catch (error) {
-    console.log(error);
-  }
-};
-
-const getWordComparisons = async () => {
-  try {
-    const wordComparisons = await WordComparison.find();
-    return wordComparisons;
-  } catch (error) {
-    console.log(error);
+    response.send({ error });
   }
 };
 

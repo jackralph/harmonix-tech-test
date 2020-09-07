@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jackralph/harmonix-tech-test#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mocha": "^8.1.3",

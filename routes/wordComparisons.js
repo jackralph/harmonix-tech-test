@@ -5,15 +5,8 @@ const {
   getWordComparisons,
 } = require("../controllers/WordComparison.controller");
 
-router.get("/", async (request, response) => {
-  const wordComparisons = await getWordComparisons();
-  console.log(wordComparisons.length);
-  response.json({ wordComparisons: wordComparisons });
-});
+router.get("/", getWordComparisons);
 
-router.post("/", async (request, response) => {
-  const wordComparison = await newWordComparison(request.body);
-  response.send(wordComparison);
-});
+router.post("/", newWordComparison);
 
 module.exports = router;
