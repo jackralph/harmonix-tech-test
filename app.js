@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-require("dotenv").config();
+// require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const wordComparisonsRouter = require("./routes/wordComparisons");
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/", wordComparisonsRouter);
 
 mongoose.connect(
-  process.env.DB_CONFIG,
+  "mongodb+srv://annagram:annagram@harmonix-tech-test.fdhtd.mongodb.net/wordcomparison?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("connected");
