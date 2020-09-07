@@ -6,7 +6,21 @@ const newWordComparison = (words) => {
   const newComparison = new WordComparison(
     wordComparison(firstWord, secondWord)
   );
-  return newComparison;
+  try {
+    newComparison.save();
+    return newComparison;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-module.exports = newWordComparison;
+const getWordComparisons = async () => {
+  try {
+    const wordComparisons = await WordComparison.find();
+    return wordComparisons;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { newWordComparison, getWordComparisons };
