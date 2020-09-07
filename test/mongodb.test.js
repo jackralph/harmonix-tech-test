@@ -10,18 +10,18 @@ describe("mongodb functionality", () => {
     });
 
     mongoose.connection
-      .once("open", () => {
-        console.log("connected to db");
-      })
+      .once("open", () => {})
       .on("error", (error) => {
         console.log(error);
       });
   });
   afterEach((done) => {
     mongoose.connection.collections.wordcomparisons.drop(() => {
-      console.log("collection dropped");
       done();
     });
+  });
+  after(() => {
+    mongoose.connection.close();
   });
   it("saves a record to the database", (done) => {
     const newWordComparison = new WordComparison({
