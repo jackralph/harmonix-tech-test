@@ -23,11 +23,25 @@ describe("mongodb functionality", () => {
   after(() => {
     mongoose.connection.close();
   });
-  it("saves a record to the database", (done) => {
+  it("saves an anagram record to the database", (done) => {
     const newWordComparison = new WordComparison({
       firstWord: "hello",
       secondWord: "world",
+      typeOfTest: "anagram",
       anagram: false,
+      timeToComplete: 2,
+    });
+
+    newWordComparison.save().then(() => {
+      assert(!newWordComparison.isNew);
+      done();
+    });
+  });
+  it("saves an palindrome record to the database", (done) => {
+    const newWordComparison = new WordComparison({
+      firstWord: "hello",
+      secondWord: "world",
+      typeOfTest: "palindrome",
       firstWordPalindrome: false,
       secondWordPalindrome: false,
       timeToComplete: 2,

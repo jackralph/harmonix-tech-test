@@ -45,17 +45,17 @@ describe("palindromeTester()", () => {
 
 describe("wordComparison()", () => {
   it("returns an object", () => {
-    const actual = wordComparison("Hello", "World");
+    const actual = wordComparison("Hello", "World", "anagram");
 
     assert.equal("object", typeof actual);
   });
   it("returns an object containing properties conforming to WordComparison model", () => {
-    const actual = wordComparison("Hello", "World");
+    const actual = wordComparison("Hello", "World", "palindrome");
 
     const expected = {
       firstWord: "Hello",
       secondWord: "World",
-      anagram: false,
+      typeOfTest: "palindrome",
       firstWordPalindrome: false,
       secondWordPalindrome: false,
       timeToComplete: 0,
@@ -63,7 +63,7 @@ describe("wordComparison()", () => {
 
     assert.equal(actual.firstWord, expected.firstWord);
     assert.equal(actual.secondWord, expected.secondWord);
-    assert.equal(actual.anagram, expected.anagram);
+    assert.equal(actual.typeOfTest, expected.typeOfTest);
     assert.equal(actual.firstWordPalindrome, expected.firstWordPalindrome);
     assert.equal(actual.secondWordPalindrome, expected.secondWordPalindrome);
     assert.equal(typeof actual.timeToComplete, "number");

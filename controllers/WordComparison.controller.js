@@ -14,9 +14,9 @@ const getWordComparisons = async (request, response) => {
 };
 
 const newWordComparison = async (request, response) => {
-  const { firstWord, secondWord } = request.body;
+  const { firstWord, secondWord, typeOfTest } = request.body;
   const newComparison = new WordComparison(
-    wordComparison(firstWord, secondWord)
+    wordComparison(firstWord, secondWord, typeOfTest)
   );
   try {
     newComparison.save();

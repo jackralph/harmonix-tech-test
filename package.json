@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/mongodb.test.js",
+    "test": "mocha test/utils.test.js",
     "start": "node app.js"
   },
   "repository": {
