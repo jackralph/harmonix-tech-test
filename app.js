@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const wordComparisonsRouter = require("./routes/wordComparisons");
-const { mongoURI } = require("./dbconfig");
+// const { mongoURI } = require("./dbconfig");
 
 app.use(cors());
 
