@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const { mongoURI } = require("./dbconfig");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const wordComparisonsRouter = require("./routes/wordComparisons");
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/", wordComparisonsRouter);
 
 mongoose.connect(
-  mongoURI,
+  process.env.DB_CONFIG,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("connected");
